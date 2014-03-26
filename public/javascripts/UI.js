@@ -59,10 +59,6 @@
       });
     },
 
-    humanChoice: function(chosenSpotID, callback) {
-
-    },
-
     humanPlay: function() {
       UI.showHumanMessage();
       UI.clickSpot(UI.humanChoice);
