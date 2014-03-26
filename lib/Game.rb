@@ -5,7 +5,7 @@ require_relative "computer"
 
 class Game
 	attr_accessor :current_player
-	attr_accessor :board
+	attr_accessor :board, :human
 
 	def initialize(reader, writer)
 		@current_player = ""

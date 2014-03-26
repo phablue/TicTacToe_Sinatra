@@ -2,7 +2,7 @@ require "sinatra"
 require "./lib/tictactoe"
 
 configure do
-  set :game => Game.new(Reader.new, Writer.new), :human => Human.new
+  set :game => Game.new(Reader.new, Writer.new)
 end
 
 get "/main" do
@@ -20,5 +20,5 @@ end
 
 post "/game/chosen_spot/" do
   chosen_spot = request.body.read
-  settings.human.chosen_spot = chosen_spot
+  settings.game.human.chosen_spot = chosen_spot
 end
