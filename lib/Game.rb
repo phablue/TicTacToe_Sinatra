@@ -1,6 +1,5 @@
 require_relative "game_board"
 require_relative "game_rules"
-require_relative "human"
 require_relative "computer"
 
 class Game
