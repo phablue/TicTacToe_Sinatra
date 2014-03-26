@@ -3,6 +3,9 @@ require "./lib/tictactoe"
 
 configure do
   set :game => Game.new(Reader.new, Writer.new)
+  set :board => settings.game.board
+  set :current_player => settings.game.current_player
+  set :chosen_spot => settings.game.chosen_spot
 end
 
 get "/main" do
@@ -20,5 +23,9 @@ end
 
 post "/game/chosen_spot/" do
   chosen_spot = request.body.read
-  settings.game.human.chosen_spot = chosen_spot
+  settings.game.chosen_spot = chosen_spot
+end
+
+post "/game/play" do
+  board.mark_choice_spot(@chosen_spot, current_player)
 end

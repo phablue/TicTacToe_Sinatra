@@ -4,17 +4,17 @@ require_relative "human"
 require_relative "computer"
 
 class Game
-	attr_accessor :current_player
-	attr_accessor :board, :human
+	attr_accessor :current_player, :chosen_spot
+	attr_accessor :board
 
 	def initialize(reader, writer)
 		@current_player = ""
+		@chosen_spot = ""
 		@game_continue = true
 		@reader = reader
 		@writer = writer
 		@board = GameBoard.new
 		@rules = GameRules.new
-		@human = Human.new(@reader, @writer)
 		@computer = Computer.new(@writer)
 	end
 
