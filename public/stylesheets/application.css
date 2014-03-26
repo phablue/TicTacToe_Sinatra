@@ -1,0 +1,191 @@
+body {
+  background: url("/images/stressed_linen_@2X.png");
+  height: 100%;
+  margin: auto;
+}
+
+.main {
+  color: #F6F6F6;
+  font-family: Impact, sans-serif;
+  font-size: 77px;
+  font-weight: normal;
+  font-style: oblique;
+  height: 20%;
+  line-height: 1.1;
+  margin: auto;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.btn-start {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-color: #ccc;
+  border-radius: 6px;
+  font-family: Impact, sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  margin-top: 200px;
+  padding: 10px 13px;
+  text-align: center;
+  width: 350px;
+}
+
+.menu {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 50%;
+  margin: auto;
+  padding-top: 140px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.player {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  border-radius: 6px;
+  font-family: Impact, sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  margin-bottom: 25px;
+  padding: 10px 13px;
+  width: 350px;
+}
+
+.players {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  border-radius: 6px;
+  font-family: Impact, sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  padding: 10px 13px;
+  width: 350px;
+}
+
+.playerMark {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 50%;
+  margin: auto;
+  padding-top: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+p {
+  color: #F6F6F6;
+  font-family: Impact, sans-serif;
+  font-size: 26px;
+  letter-spacing: 3px;
+}
+
+#Xmark {
+  color: #F6F6F6;
+  background-color: black;
+  border-color: #ccc;
+  border-radius: 6px;
+  font-size: 100px;
+  font-weight: 600;
+  height: 120px;
+  margin-right: 50px;
+  text-align: center;
+  width: 120px;
+}
+
+#Omark {
+  color: #F6F6F6;
+  background-color: black;
+  border-color: #ccc;
+  border-radius: 6px;
+  font-size: 100px;
+  font-weight: 600;
+  height: 120px;
+  text-align: center;
+  width: 120px;
+}
+
+.message {
+  color: #E8E8E8;
+  display: block;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  height: 50px;
+  line-height: 1.0;
+  margin: auto;
+  position: static;
+  text-align: center;
+}
+
+h1 {
+  font-size: 20px;
+  margin: auto;
+}
+
+.Board {
+  color: #F6F6F6;
+  font-size: 100px;
+  font-weight: 600;
+  height: 400px;
+  margin: auto;
+  position: static;
+  text-align: center;
+  width: 400px;
+}
+
+th, td {
+  border: 4px outset #D3D4C4;
+  height: 120px;
+  margin: 10px;
+  width: 120px;
+}
+
+.buttons {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  height: 30px;
+  margin: auto;
+  padding: 50px;
+  position: static;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-new {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-restart {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
