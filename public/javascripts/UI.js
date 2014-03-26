@@ -1,5 +1,7 @@
 (function() {
   var UI = {
+    currentPlayer: null,
+
     inputErrorMessage: function() {
       alert("You have to choose 'y' or 'n'.");
     },
@@ -10,7 +12,11 @@
 
     hideHumanMessage: function() {
       $("#Human").hide();
-    },    
+    },
+
+    setTextContents: function(elementID, TextContents) {
+      $("#" + elementID).text(TextContents);
+    },
 
     getTextContents: function(elementID) {
       return $("#" + elementID).text()
@@ -44,6 +50,7 @@
           return UI.choiceMark();
         }
         else if (button == "#Xmark" || button == "#Omark") {
+          UI.currentPlayer = e.target.id
           $.post("/game/choice_mark/", UI.getTextContents(e.target.id));
           UI.toggleDisplayedButtons(".playerMark", ".game");
         }
