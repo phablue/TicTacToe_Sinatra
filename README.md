@@ -1,6 +1,6 @@
-TicTacToe_Ruby
+TicTacToe_Sinatra
 ===============
 
-To play the game type "ruby lib/tictactoe.rb"
+To play the game type "ruby application.rb"
 
 
