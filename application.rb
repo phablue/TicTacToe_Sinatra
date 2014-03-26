@@ -18,5 +18,7 @@ post "/game/choice_mark/" do
   settings.game.current_player = mark
 end
 
-post "/game/play/" do
+post "/game/chosen_spot/" do
+  chosen_spot = request.body.read
+  settings.human.chosen_spot = chosen_spot
 end

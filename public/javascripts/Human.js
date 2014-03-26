@@ -13,7 +13,7 @@
 
     markChosenSpot: function(chosenSpotId, currentPlayer) {
       UI.setTextContents(chosenSpotId, currentPlayer);
-      $.post("/game/play/", currentPlayer);
+      $.post("/game/chosen_spot/", currentPlayer);
     },
 
     checkChosenSpotAvailable: function(chosenSpotId) {
