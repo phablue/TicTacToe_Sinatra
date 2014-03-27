@@ -2,8 +2,8 @@
   var UI = {
     currentPlayer: null,
 
-    inputErrorMessage: function() {
-      alert("You have to choose 'y' or 'n'.");
+    unbindClick: function(element) {
+      $(element).unbind("click");
     },
 
     showHumanMessage: function() {
@@ -20,6 +20,14 @@
 
     getTextContents: function(elementID) {
       return $("#" + elementID).text()
+    },
+
+    spotErrorMessage: function() {
+      alert("That is not an available spot.\nPlease choose a different spot.");
+    },
+
+    inputErrorMessage: function() {
+      alert("You have to choose 'y' or 'n'.");
     },
 
     askFirstMove: function() {

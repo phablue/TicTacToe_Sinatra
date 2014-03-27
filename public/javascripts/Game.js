@@ -47,8 +47,8 @@
     },
 
     computerChoice: function(callback) {
-      Computer.chooseTheBestSpot(Game.currentPlayer);
-      if (Game.checkGameOver(Game.currentPlayer) === false) {
+      Computer.chooseTheBestSpot(UI.currentPlayer);
+      if (Game.checkGameOver(UI.currentPlayer) === false) {
         callback(Game.playGame);
       }
     },
