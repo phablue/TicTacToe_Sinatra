@@ -3,9 +3,13 @@ require "./lib/tictactoe"
 
 configure do
   set :game => Game.new(Reader.new, Writer.new)
-  set :board => settings.game.board
-  set :current_player => settings.game.current_player
-  set :chosen_spot => settings.game.chosen_spot
+end
+
+before do
+  @game = settings.game
+  @board = settings.game.board
+  @current_player = settings.game.current_player
+  @chosen_spot = settings.game.chosen_spot
 end
 
 get "/main" do
@@ -13,17 +17,15 @@ get "/main" do
 end
 
 get "/game" do
-  game.check_game_over(current_player)
+  @game.check_game_over(current_player)
   erb :tictactoe
 end
 
 post "/game/choice_mark/" do
-  mark = request.body.read
-  settings.game.current_player = mark
+  @current_player = request.body.read
 end
 
 post "/game/chosen_spot/" do
-  chosen_spot = request.body.read
-  settings.game.chosen_spot = chosen_spot
-  board.mark_choice_spot(chosen_spot, current_player)
+  @chosen_spot = request.body.read
+  @board.mark_choice_spot(@chosen_spot, @current_player)
 end
