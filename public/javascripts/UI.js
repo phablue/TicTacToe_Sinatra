@@ -75,12 +75,12 @@
 
     humanPlay: function() {
       UI.showHumanMessage();
-      UI.clickSpot(UI.humanChoice);
+      UI.clickSpot(Game.humanChoice);
     },
 
     computerPlay: function() {
       UI.showComputerMessage(Game.computerChoice);
-    }
+    },
 
     gameStart: function() {
       Game.firstMove();

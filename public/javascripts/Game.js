@@ -60,7 +60,7 @@
         UI.humanPlay();
       }
       else if (Game.goFirst === "n") {
-        Game.changeCurrentPlayer(Game.currentPlayer);
+        Game.changeCurrentPlayer(UI.currentPlayer);
         UI.computerPlay();
       }
     }
