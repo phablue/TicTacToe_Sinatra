@@ -72,13 +72,9 @@
       UI.clickSpot(UI.humanChoice);
     },
 
-    playGame: function() {
-      // computer vs human
-    },  
-
     gameStart: function() {
       Game.firstMove();
-      UI.playGame();
+      Game.playGame();
     },
 
     choiceMark: function() {
