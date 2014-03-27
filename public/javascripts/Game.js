@@ -18,7 +18,7 @@
       var input = UI.askFirstMove();
       if(input == "y" || input == "n") {
         UI.toggleDisplayedButtons(".btn-restart", ".btn-new");
-
+        this.goFirst = input;
       }
       else {
         UI.inputErrorMessage();
