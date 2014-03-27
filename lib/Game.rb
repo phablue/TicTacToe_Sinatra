@@ -17,11 +17,6 @@ class Game
 		@computer = Computer.new(@writer)
 	end
 
-	def change_player(current_player)
-		@current_player = (current_player == "X") ? "O" : "X"
-		false
-	end
-
 	def check_game_over(current_player)
 		@rules.game_over(@board) ? true : false
 	end
