@@ -47,6 +47,6 @@ class GameBoard
 	end
 
 	def mark_choice_spot(chosen_spot, current_player)
-		@spots[chosen_spot.to_i-1] = current_player
+		@spots[chosen_spot.to_i] = current_player
 	end
 end
