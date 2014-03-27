@@ -137,7 +137,7 @@
     },
 
     gameOver: function() {
-      console.log( $.get("/game/:gameOver"))
+      console.log( $.get("/game/game_over"))
     },
 
     humanPlay: function() {

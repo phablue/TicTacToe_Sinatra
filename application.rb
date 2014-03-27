@@ -16,16 +16,13 @@ get "/main" do
   erb :tictactoe
 end
 
-get "/game" do
-  @game.check_game_over(current_player)
-  erb :tictactoe
+get "/game/:game_over" do
+  params[:game_over] = @game.check_game_over(@current_player)
 end
 
-post "/game/choice_mark/" do
+post "/game/" do
   @current_player = request.body.read
-end
-
-post "/game/chosen_spot/" do
+  request.body.rewind
   @chosen_spot = request.body.read
   @board.mark_choice_spot(@chosen_spot, @current_player)
 end

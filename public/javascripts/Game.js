@@ -26,6 +26,7 @@
     },
 
     checkGameOver: function(currentPlayer) {
+      console.log(UI.gameOver())
       Game.changeCurrentPlayer(currentPlayer);
       if(GameRules.gameOver(GameBoard)) {
         UI.visualWhenGameOver(currentPlayer);
