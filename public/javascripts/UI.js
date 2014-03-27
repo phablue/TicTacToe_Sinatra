@@ -137,10 +137,13 @@
     },
 
     gameOver: function() {
-      console.log( $.get("/game/game_over"))
+      $.getJSON("/game/").done(function(data) {
+        return $.parseJSON(data.game_over);
+      });
     },
 
     humanPlay: function() {
+      UI.hideComputerMessage();
       UI.showHumanMessage();
       UI.clickSpot(Game.humanChoice);
     },

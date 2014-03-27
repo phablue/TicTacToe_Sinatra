@@ -26,9 +26,8 @@
     },
 
     checkGameOver: function(currentPlayer) {
-      console.log(UI.gameOver())
       Game.changeCurrentPlayer(currentPlayer);
-      if(GameRules.gameOver(GameBoard)) {
+      if(UI.gameOver()) {
         UI.visualWhenGameOver(currentPlayer);
         return true;
       }
@@ -39,7 +38,7 @@
       if (Human.choiceSpot(chosenSpotID, UI.currentPlayer)) {
         UI.unbindClick("tr td");
         UI.hideHumanMessage();
-        if (Game.checkGameOver(UI.currentPlayerUI) === false) {
+        if (Game.checkGameOver(UI.currentPlayer) === false) {
           callback(Game.playGame);
         }
       }

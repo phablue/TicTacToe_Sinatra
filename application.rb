@@ -1,3 +1,4 @@
+require "json"
 require "sinatra"
 require "./lib/tictactoe"
 
@@ -16,8 +17,8 @@ get "/main" do
   erb :tictactoe
 end
 
-get "/game/:game_over" do
-  params[:game_over] = @game.check_game_over(@current_player)
+get "/game/" do
+  {:game_over => @game.check_game_over(@current_player)}.to_json
 end
 
 post "/game/" do
