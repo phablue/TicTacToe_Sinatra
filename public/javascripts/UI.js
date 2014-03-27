@@ -79,6 +79,9 @@
 
     setTextContents: function(elementID, TextContents) {
       $("#" + elementID).text(TextContents);
+    },
+
+    setBoard: function(elementID) {
       $.post("/game/", elementID);
     },
 
