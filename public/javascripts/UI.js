@@ -6,6 +6,12 @@
       $(element).unbind("click");
     },
 
+    showComputerMessage: function(callback) {
+      $("#Computer").show("fast", function() {
+        callback(UI.humanPlay);
+      });
+    },
+
     showHumanMessage: function() {
       $("#Human").show();
     },
@@ -48,7 +54,7 @@
 
     clickSpot: function(callback) {
       $("tr td").click(function(e) {
-        callback(e.target.id);//, UI.computerPlay);
+        callback(e.target.id, UI.computerPlay);
       });
     },
 
@@ -71,6 +77,10 @@
       UI.showHumanMessage();
       UI.clickSpot(UI.humanChoice);
     },
+
+    computerPlay: function() {
+      UI.showComputerMessage(Game.computerChoice);
+    }
 
     gameStart: function() {
       Game.firstMove();
