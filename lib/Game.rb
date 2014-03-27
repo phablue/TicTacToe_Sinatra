@@ -10,8 +10,6 @@ class Game
 		@current_player = ""
 		@chosen_spot = ""
 		@game_continue = true
-		@reader = reader
-		@writer = writer
 		@board = GameBoard.new
 		@rules = GameRules.new
 		@computer = Computer.new
