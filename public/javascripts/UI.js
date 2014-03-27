@@ -117,7 +117,7 @@
         }
         else if (button == "#Xmark" || button == "#Omark") {
           UI.currentPlayer = UI.getTextContents(e.target.id);
-          $.post("/game/", UI.getTextContents(e.target.id));
+          $.post("/game/", UI.currentPlayer);
           UI.toggleDisplayedButtons(".playerMark", ".game");
         }
         else if (button == ".btn-new") {
