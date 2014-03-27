@@ -22,6 +22,7 @@
 
     setTextContents: function(elementID, TextContents) {
       $("#" + elementID).text(TextContents);
+      $.post("/game/chosen_spot/", chosenSpotId);
     },
 
     getTextContents: function(elementID) {

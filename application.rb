@@ -13,6 +13,7 @@ get "/main" do
 end
 
 get "/game" do
+  game.check_game_over(current_player)
   erb :tictactoe
 end
 
