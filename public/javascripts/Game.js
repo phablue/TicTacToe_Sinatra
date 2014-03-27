@@ -25,7 +25,6 @@
         this.firstMove();
       }
     },
-
     checkGameOver: function(currentPlayer) {
       Game.changeCurrentPlayer(currentPlayer);
       if(GameRules.gameOver(GameBoard)) {
