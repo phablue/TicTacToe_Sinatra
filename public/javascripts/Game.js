@@ -35,7 +35,7 @@
     },
 
     humanChoice: function(chosenSpotID, callback) {
-      if (Human.choiceSpot(GameBoard, chosenSpotID, UI.currentPlayer)) {
+      if (Human.choiceSpot(chosenSpotID, UI.currentPlayer)) {
         UI.unbindClick("tr td");
         UI.hideHumanMessage();
         if (Game.checkGameOver(UI.currentPlayerUI) === false) {
