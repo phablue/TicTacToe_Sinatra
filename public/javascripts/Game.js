@@ -3,7 +3,7 @@
     goFirst: null,
 
     changeCurrentPlayer: function(currentPlayer) {
-      this.currentPlayer = currentPlayer == "X" ? "O" : "X";
+      UI.currentPlayer = currentPlayer == "X" ? "O" : "X";
     },
 
     winner: function(currentPlayer) {
@@ -16,7 +16,7 @@
     firstMove: function() {
       var input = UI.askFirstMove();
       if(input == "y" || input == "n") {
-        UI.toggleDisplayedButton(".btn-restart", ".btn-new");
+        UI.toggleDisplayedButtons(".btn-restart", ".btn-new");
         this.goFirst = input;
       }
       else {

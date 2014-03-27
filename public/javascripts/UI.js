@@ -9,7 +9,7 @@
 
     visualAfterGameOver: function() {
       this.unbindClick("tr td");
-      this.toggleDisplayedButton(".btn-new", ".btn-restart");
+      this.toggleDisplayedButtons(".btn-new", ".btn-restart");
       this.hideComputerMessage();
       this.hideHumanMessage();
       this.restartGame();
@@ -118,16 +118,16 @@
         else if (button == "#Xmark" || button == "#Omark") {
           UI.currentPlayer = UI.getTextContents(e.target.id);
           $.post("/game/choice_mark/", UI.getTextContents(e.target.id));
-          UI.toggleDisplayedButton(".playerMark", ".game");
+          UI.toggleDisplayedButtons".playerMark", ".game");
         }
         else if (button == ".btn-new") {
-          UI.hideButton(".game")
+          UI.hideButtons(".game")
           UI.unbindClick("button");
           UI.unbindClick("tr td");
           UI.resetGame();
         }
         else if (button == ".btn-restart") {
-          UI.hideButton(".game")
+          UI.hideButtons(".game")
           UI.unbindClick("button");
           UI.resetGame();
         }
