@@ -82,7 +82,7 @@
     },
 
     setBoard: function(elementID) {
-      $.post("/game/", elementID);
+      $.post("/game/human/", elementID);
     },
 
     getTextContents: function(elementID) {
@@ -120,7 +120,6 @@
         }
         else if (button == "#Xmark" || button == "#Omark") {
           UI.currentPlayer = UI.getTextContents(e.target.id);
-          $.post("/game/", UI.currentPlayer);
           UI.toggleDisplayedButtons(".playerMark", ".game");
         }
         else if (button == ".btn-new") {
@@ -146,12 +145,14 @@
     },
 
     humanPlay: function() {
+      $.post("/game/human/", UI.currentPlayer);
       UI.hideComputerMessage();
       UI.showHumanMessage();
       UI.clickSpot(Game.humanChoice);
     },
 
     computerPlay: function() {
+      $.post("/game/computer/", UI.currentPlayer);
       UI.showComputerMessage(Game.computerChoice);
     },
 

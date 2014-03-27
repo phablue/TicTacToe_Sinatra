@@ -23,11 +23,13 @@ get "/game/" do
   {:computer_choice => @computer.choose_the_best_spot(@board, @current_player)}.to_json
 end
 
-post "/game/" do
+post "/game/human/" do
   @current_player = request.body.read
   request.body.rewind
   @chosen_spot = request.body.read
   @board.mark_choice_spot(@chosen_spot, @current_player)
-  request.body.rewind
+end
+
+post "/game/computer/" do
   @current_player = request.body.read
 end
