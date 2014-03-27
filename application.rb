@@ -20,6 +20,7 @@ end
 
 get "/game/" do
   {:game_over => @game.check_game_over(@current_player)}.to_json
+  {:computer_choice => @computer.choose_the_best_spot(@board, @current_player)}.to_json
 end
 
 post "/game/" do
@@ -27,4 +28,6 @@ post "/game/" do
   request.body.rewind
   @chosen_spot = request.body.read
   @board.mark_choice_spot(@chosen_spot, @current_player)
+  request.body.rewind
+  @current_player = request.body.read
 end
