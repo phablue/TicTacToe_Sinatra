@@ -118,7 +118,7 @@
         else if (button == "#Xmark" || button == "#Omark") {
           UI.currentPlayer = UI.getTextContents(e.target.id);
           $.post("/game/choice_mark/", UI.getTextContents(e.target.id));
-          UI.toggleDisplayedButtons".playerMark", ".game");
+          UI.toggleDisplayedButtons(".playerMark", ".game");
         }
         else if (button == ".btn-new") {
           UI.hideButtons(".game")
