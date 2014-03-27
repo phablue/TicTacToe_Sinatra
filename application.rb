@@ -24,9 +24,5 @@ end
 post "/game/chosen_spot/" do
   chosen_spot = request.body.read
   settings.game.chosen_spot = chosen_spot
-end
-
-post "/game/human" do
-  puts chosen_spot
   board.mark_choice_spot(chosen_spot, current_player)
 end
