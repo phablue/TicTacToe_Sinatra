@@ -26,6 +26,6 @@ post "/game/chosen_spot/" do
   settings.game.chosen_spot = chosen_spot
 end
 
-post "/game/play" do
-  board.mark_choice_spot(@chosen_spot, current_player)
+post "/game/human" do
+  board.mark_choice_spot(chosen_spot, current_player)
 end

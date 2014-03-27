@@ -74,21 +74,10 @@
 
     playGame: function() {
       // computer vs human
-    },
-
-    firstMove: function() {
-      var input = this.askFirstMove();
-      if(input == "y" || input == "n") {
-        this.toggleDisplayedButtons(".btn-restart", ".btn-new");
-      }
-      else {
-        this.inputErrorMessage();
-        this.firstMove();
-      }
-    },    
+    },  
 
     gameStart: function() {
-      UI.firstMove();
+      Game.firstMove();
       UI.playGame();
     },
 

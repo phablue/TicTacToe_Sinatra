@@ -1,6 +1,8 @@
 (function() {
   var input;
   var Game = {
+    goFirst = null,
+
     changeCurrentPlayer: function(currentPlayer) {
       UI.currentPlayer = currentPlayer == "X" ? "O" : "X";
     },
@@ -16,7 +18,7 @@
       var input = UI.askFirstMove();
       if(input == "y" || input == "n") {
         UI.toggleDisplayedButton(".btn-restart", ".btn-new");
-        this.goFirst = input;
+
       }
       else {
         UI.inputErrorMessage();
