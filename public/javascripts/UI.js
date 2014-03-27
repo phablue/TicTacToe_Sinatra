@@ -64,7 +64,7 @@
           return UI.choiceMark();
         }
         else if (button == "#Xmark" || button == "#Omark") {
-          UI.currentPlayer = e.target.id
+          UI.currentPlayer = UI.getTextContents(e.target.id);
           $.post("/game/choice_mark/", UI.getTextContents(e.target.id));
           UI.toggleDisplayedButtons(".playerMark", ".game");
         }
