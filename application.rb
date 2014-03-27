@@ -27,5 +27,6 @@ post "/game/chosen_spot/" do
 end
 
 post "/game/human" do
+  puts chosen_spot
   board.mark_choice_spot(chosen_spot, current_player)
 end

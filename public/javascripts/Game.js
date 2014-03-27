@@ -1,7 +1,7 @@
 (function() {
   var input;
   var Game = {
-    goFirst = null,
+    goFirst: null,
 
     changeCurrentPlayer: function(currentPlayer) {
       UI.currentPlayer = currentPlayer == "X" ? "O" : "X";
