@@ -3,7 +3,7 @@ require "sinatra"
 require "./lib/tictactoe"
 
 configure do
-  set :game => Game.new(Reader.new, Writer.new)
+  set :game => Game.new
 end
 
 before do
