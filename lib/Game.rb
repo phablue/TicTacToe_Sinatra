@@ -6,7 +6,7 @@ class Game
 	attr_accessor :current_player, :chosen_spot
 	attr_accessor :board, :computer
 
-	def initialize(reader, writer)
+	def initialize
 		@current_player = ""
 		@chosen_spot = ""
 		@game_continue = true
@@ -14,7 +14,7 @@ class Game
 		@writer = writer
 		@board = GameBoard.new
 		@rules = GameRules.new
-		@computer = Computer.new(@writer)
+		@computer = Computer.new
 	end
 
 	def check_game_over(current_player)
