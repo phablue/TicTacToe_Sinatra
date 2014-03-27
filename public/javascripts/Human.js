@@ -13,6 +13,7 @@
 
     markChosenSpot: function(chosenSpotId, currentPlayer) {
       UI.setTextContents(chosenSpotId, currentPlayer);
+      UI.setBoard(chosenSpotId);
     },
 
     checkChosenSpotAvailable: function(chosenSpotId) {
