@@ -30,5 +30,5 @@ post "/game/computer/" do
 end
 
 get "/game/computer/" do
-  {:computer_choice => @computer.choose_the_best_spot(@game.board, @current_player)}.to_json
+  {:computer_choice => @game.computer.choose_the_best_spot(@game.board, @current_player)}.to_json
 end
