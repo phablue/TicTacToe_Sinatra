@@ -8,6 +8,7 @@ class Computer
 	def choose_the_best_spot(board, current_player)
 		choice = minimax(board, current_player)[1]
 		board.mark_choice_spot(choice, current_player)
+		return choice
 	end
 
 	def minimax(board, current_player, level = 0)
