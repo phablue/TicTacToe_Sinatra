@@ -14,7 +14,7 @@ class Game
 		@computer = Computer.new
 	end
 
-	def check_game_over(current_player)
+	def check_game_over()
 		@rules.game_over(@board) ? true : false
 	end
 end

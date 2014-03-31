@@ -15,17 +15,17 @@ get "/" do
 end
 
 get "/game/" do
-  {:game_over => @game.check_game_over(@current_player)}.to_json
-  {:computer_choice => @computer.choose_the_best_spot(@board, @current_player)}.to_json
+  {:game_over => @game.check_game_over()}.to_json
 end
 
 post "/game/human/" do
-  @current_player = request.body.read
+  @game.current_player = request.body.read
   request.body.rewind
-  @chosen_spot = request.body.read
-  @board.mark_choice_spot(@chosen_spot, @current_player)
+  chosen_spot = request.body.read
+  @board.mark_choice_spot(chosen_spot, @game.current_player)
 end
 
 post "/game/computer/" do
-  @current_player = request.body.read
+  @game.current_player = request.body.read
+  {:computer_choice => @computer.choose_the_best_spot(@game.board, @current_player)}.to_json
 end
