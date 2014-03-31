@@ -27,5 +27,5 @@ end
 
 post "/game/computer/" do
   @game.current_player = request.body.read
-  {:computer_choice => @computer.choose_the_best_spot(@game.board, @current_player)}.to_json
+  {:computer_choice => @computer.choose_the_best_spot(@game.board, @game.current_player)}.to_json
 end
