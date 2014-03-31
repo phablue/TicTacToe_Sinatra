@@ -1,6 +1,6 @@
 require "json"
 require "sinatra"
-require "./lib/tictactoe"
+require "./lib/game"
 
 configure do
   set :game => Game.new
