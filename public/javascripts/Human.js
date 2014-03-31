@@ -3,6 +3,7 @@
     choiceSpot: function(chosenSpotId, currentPlayer) {
       if (this.checkChosenSpotAvailable(chosenSpotId)) {
         this.markChosenSpot(chosenSpotId, currentPlayer);
+        UI.setBoard(chosenSpotId);
         return true;
       }
       else {
@@ -13,7 +14,6 @@
 
     markChosenSpot: function(chosenSpotId, currentPlayer) {
       UI.setTextContents(chosenSpotId, currentPlayer);
-      UI.setBoard(chosenSpotId);
     },
 
     checkChosenSpotAvailable: function(chosenSpotId) {
