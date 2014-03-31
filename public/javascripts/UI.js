@@ -81,12 +81,12 @@
       $("#" + elementID).text(TextContents);
     },
 
-    setBoard: function(elementID) {
-      $.post("/game/human/", elementID);
+    setBoard: function(elementID, currentPlayer) {
+      $.post("/game/human/", {chosen_spot: elementID, current_player: currentPlayer});
     },
 
     getTextContents: function(elementID) {
-      return $("#" + elementID).text()
+      return $("#" + elementID).text();
     },
 
     toggleDisplayedButtons: function(hidebutton, showbutton) {
@@ -145,14 +145,13 @@
     },
 
     humanPlay: function() {
-      $.post("/game/human/", UI.currentPlayer);
       UI.hideComputerMessage();
       UI.showHumanMessage();
       UI.clickSpot(Game.humanChoice);
     },
 
     computerPlay: function() {
-      $.post("/game/computer/", UI.currentPlayer);
+      $.post("/game/computer/", {current_player: UI.currentPlayer});
       UI.showComputerMessage(Game.computerChoice);
     },
 

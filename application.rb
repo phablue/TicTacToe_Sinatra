@@ -19,13 +19,12 @@ get "/game/" do
 end
 
 post "/game/human/" do
-  @game.current_player = request.body.read
-  request.body.rewind
-  chosen_spot = request.body.read
-  @board.mark_choice_spot(chosen_spot, @game.current_player)
+  chosen_spot = params[:chosen_spot]
+  current_player = params[:current_player]
+  @game.board.mark_choice_spot(chosen_spot, current_player)
 end
 
 post "/game/computer/" do
-  @game.current_player = request.body.read
-  {:computer_choice => @computer.choose_the_best_spot(@game.board, @game.current_player)}.to_json
+  current_player = params[:current_player]
+  {:computer_choice => @computer.choose_the_best_spot(@game.board, current_player)}.to_json
 end
