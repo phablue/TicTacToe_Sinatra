@@ -8,6 +8,7 @@ end
 
 before do
   @game = settings.game
+  @current_player
 end
 
 get "/" do
@@ -25,6 +26,9 @@ post "/game/human/" do
 end
 
 post "/game/computer/" do
-  current_player = params[:current_player]
-  {:computer_choice => @computer.choose_the_best_spot(@game.board, current_player)}.to_json
+  @current_player = params[:current_player]
+end
+
+get "/game/computer/" do
+  {:computer_choice => @computer.choose_the_best_spot(@game.board, @current_player)}.to_json
 end
