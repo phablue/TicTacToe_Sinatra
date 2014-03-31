@@ -22,7 +22,7 @@ end
 post "/game/human/" do
   chosen_spot = params[:chosen_spot]
   current_player = params[:current_player]
-  @game.board.mark_choice_spot(chosen_spot_to_i-1, current_player)
+  @game.board.mark_choice_spot(chosen_spot.to_i-1, current_player)
 end
 
 post "/game/computer/" do
