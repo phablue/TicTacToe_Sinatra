@@ -6,13 +6,10 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rubygems'
 require 'bundler/setup'
-require 'human'
 require 'computer'
 require 'game_board'
 require 'game_rules'
 require 'game'
-require 'reader'
-require 'writer'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
