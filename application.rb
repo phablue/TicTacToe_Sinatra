@@ -21,6 +21,7 @@ end
 
 post "/game/human/" do
   chosen_spot = params[:chosen_spot]
+  puts chosen_spot
   current_player = params[:current_player]
   @game.board.mark_choice_spot(chosen_spot, current_player)
 end
