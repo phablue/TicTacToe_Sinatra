@@ -4,7 +4,6 @@
 
     changeCurrentPlayer: function(currentPlayer) {
       UI.currentPlayer = currentPlayer == "X" ? "O" : "X";
-      $.post("/game/", UI.currentPlayer);
     },
 
     winner: function(currentPlayer) {
