@@ -10,7 +10,7 @@ before do
   @game = settings.game
 end
 
-get "/main" do
+get "/" do
   erb :tictactoe
 end
 
