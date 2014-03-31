@@ -8,10 +8,6 @@ end
 
 before do
   @game = settings.game
-  @board = settings.game.board
-  @computer = settings.game.computer
-  @current_player = settings.game.current_player
-  @chosen_spot = settings.game.chosen_spot
 end
 
 get "/main" do
