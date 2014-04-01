@@ -1,6 +1,7 @@
 (function() {
   var Game = {
     goFirst: null,
+    gameStatus: null,
 
     changeCurrentPlayer: function(currentPlayer) {
       UI.currentPlayer = currentPlayer == "X" ? "O" : "X";
@@ -26,11 +27,14 @@
     },
 
     checkGameOver: function(currentPlayer) {
-      Game.changeCurrentPlayer(currentPlayer);
-      if(UI.gameOver()) {
-        UI.visualWhenGameOver(currentPlayer);
-        return true;
-      }
+      this.changeCurrentPlayer(currentPlayer);
+      $.getJSON("/game/").done(function(data) {
+        if(data["game_over"]) {
+          UI.visualWhenGameOver(currentPlayer);
+          Game.gameStatus = true;
+        }
+        Game.gameStatus = false;
+      });
       return false;
     },
 
