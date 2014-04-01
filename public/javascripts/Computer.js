@@ -1,10 +1,15 @@
 (function() {
   var Computer = {
+    comp: null,
+
     chooseTheBestSpot: function(currentPlayer) {
-      $.getJSON("/game/computer/").done(function(data) {
-        var chosenSpot = $.parseJSON(data.computer_choice);
-        Human.markChosenSpot(chosenSpot-1, currentPlayer);
-      });
+      this.comp = currentPlayer;
+      $.getJSON("/game/computer/").done(Computer.markComputerChoice);
+    },
+
+    markComputerChoice: function(data) {
+      var chosenSpot = data["computer_choice"];
+      Human.markChosenSpot(chosenSpot-1, Computer.comp);
       UI.hideComputerMessage();
     }
   }
