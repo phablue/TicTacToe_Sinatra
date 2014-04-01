@@ -1,7 +1,6 @@
 (function() {
   var Game = {
     goFirst: null,
-    gameStatus: null,
 
     changeCurrentPlayer: function(currentPlayer) {
       UI.currentPlayer = currentPlayer == "X" ? "O" : "X";
@@ -31,9 +30,7 @@
       $.getJSON("/game/").done(function(data) {
         if(data["game_over"]) {
           UI.visualWhenGameOver(currentPlayer);
-          Game.gameStatus = true;
         }
-        Game.gameStatus = false;
       });
       return false;
     },
