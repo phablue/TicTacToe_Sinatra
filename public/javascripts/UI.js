@@ -141,7 +141,7 @@
     },
 
     humanPlay: function() {
-      UI.hideComputerMessage();
+      UI.changeHumanMessage();
       UI.showHumanMessage();
       UI.clickSpot(Game.humanChoice);
     },
