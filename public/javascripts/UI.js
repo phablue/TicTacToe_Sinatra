@@ -2,6 +2,7 @@
   var UI = {
     gameType: null,
     currentPlayer: null,
+    winner: null,
 
     unbindClick: function(element) {
       $(element).unbind("click");
@@ -16,12 +17,13 @@
     },
 
     visualWhenGameOver: function(currentPlayer) {
+      UI.winner = currentPlayer
       $.getJSON("/game/").done(UI.gameOverMessage);
     },
 
     gameOverMessage: function(data) {
       if(data["game_win"]) {
-        UI.winMessage(Game.winner(currentPlayer));
+        UI.winMessage(Game.winner(UI.winner));
         UI.visualAfterGameOver();
       }
       else if(data["game_tie"]) {
