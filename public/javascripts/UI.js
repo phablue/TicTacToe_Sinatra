@@ -16,14 +16,16 @@
     },
 
     visualWhenGameOver: function(currentPlayer) {
-      if(GameRules.gameWin(GameBoard)) {
-        this.winMessage(Game.winner(currentPlayer));
-        this.visualAfterGameOver();
-      }
-      else if(GameRules.gameTie(GameBoard)) {
-        this.tieMessage();
-        this.visualAfterGameOver();
-      }
+      $.getJSON("/game/").done(function(data) {
+        if(data["game_win"]) {
+          UI.winMessage(Game.winner(currentPlayer));
+          UI.visualAfterGameOver();
+        }
+        else if(data["game_tie"]) {
+          UI.tieMessage();
+          UI.visualAfterGameOver();
+        }
+      });
     },
 
     showComputerMessage: function(callback) {
@@ -135,12 +137,6 @@
         }
         e.stopPropagation();
         callback();
-      });
-    },
-
-    gameOver: function() {
-      $.getJSON("/game/").done(function(data) {
-        return $.parseJSON(data.game_over);
       });
     },
 
