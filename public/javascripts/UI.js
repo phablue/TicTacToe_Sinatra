@@ -16,16 +16,18 @@
     },
 
     visualWhenGameOver: function(currentPlayer) {
-      $.getJSON("/game/").done(function(data) {
-        if(data["game_win"]) {
-          UI.winMessage(Game.winner(currentPlayer));
-          UI.visualAfterGameOver();
-        }
-        else if(data["game_tie"]) {
-          UI.tieMessage();
-          UI.visualAfterGameOver();
-        }
-      });
+      $.getJSON("/game/").done(UI.gameOverMessage);
+    },
+
+    gameOverMessage: function(data) {
+      if(data["game_win"]) {
+        UI.winMessage(Game.winner(currentPlayer));
+        UI.visualAfterGameOver();
+      }
+      else if(data["game_tie"]) {
+        UI.tieMessage();
+        UI.visualAfterGameOver();
+      }
     },
 
     showComputerMessage: function(callback) {
