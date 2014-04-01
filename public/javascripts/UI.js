@@ -153,7 +153,7 @@
 
     resetGame: function() {
       this.removeText("tr td");
-      // reset game
+      $.get("/resetgame/");
     },
 
     newGame: function() {

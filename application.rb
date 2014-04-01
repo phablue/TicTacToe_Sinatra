@@ -28,6 +28,7 @@ end
 
 get "/game/computer/" do
   current_player = session[:current_player]
+  session.clear
   computer_choice = @game.computer.choose_the_best_spot(@game.board, current_player)
   {:computer_choice => computer_choice}.to_json
 end
@@ -36,4 +37,8 @@ get "/game/" do
   {:game_over => @game.rules.game_over(@game.board),
     :game_win => @game.rules.game_win(@game.board),
     :game_tie => @game.rules.game_tie(@game.board)}.to_json
+end
+
+get "/resetgame/" do
+  #reset setting 
 end
