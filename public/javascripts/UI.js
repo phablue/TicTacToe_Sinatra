@@ -153,7 +153,7 @@
 
     resetGame: function() {
       this.removeText("tr td");
-      GameBoard.resetBoard();
+      // reset game
     },
 
     newGame: function() {
