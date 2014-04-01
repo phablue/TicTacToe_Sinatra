@@ -151,7 +151,23 @@
       UI.showComputerMessage(Game.computerChoice);
     },
 
+    resetGame: function() {
+      this.removeText("tr td");
+      GameBoard.resetBoard();
+    },
+
+    newGame: function() {
+      this.hideComputerMessage();
+      this.hideHumanMessage();
+      this.clickButton(".btn-new", UI.gameMenu);
+    },
+
+    restartGame: function() {
+      this.clickButton(".btn-restart", UI.gameMenu);
+    },
+
     gameStart: function() {
+      UI.newGame();
       Game.firstMove();
       Game.playGame();
     },
@@ -165,6 +181,7 @@
     gameMenu: function() {
       UI.toggleDisplayedButtons(".btn-start", ".menu");
       UI.clickButton(".player");
+      UI.clickButton(".players");
     },
 
     gameMain: function() {
