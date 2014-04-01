@@ -51,7 +51,7 @@
         UI.setTextContents("Human", "Click a spot you want.");
       }
       else {
-        UI.setTextContents("Human", "Player '" + Game.currentPlayer + "' click a spot you want.");
+        UI.setTextContents("Human", "Player '" + UI.currentPlayer + "' click a spot you want.");
       }
     },
 
