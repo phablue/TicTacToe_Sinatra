@@ -5,6 +5,7 @@ require "./lib/game"
 use Rack::Session::Pool
 
 get "/" do
+  session.clear
   erb :tictactoe
 end
 
@@ -38,6 +39,5 @@ get "/game/gamerules/" do
 end
 
 get "/resetgame/" do
-  session.clear
   redirect "/"
 end
