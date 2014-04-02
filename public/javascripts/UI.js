@@ -172,6 +172,7 @@
     },
 
     gameStart: function() {
+      $.get("/game/");
       UI.newGame();
       Game.firstMove();
       Game.playGame();
