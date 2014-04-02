@@ -1,6 +1,6 @@
 require "json"
 require "sinatra"
-require "./lib/game"
+require_relative "lib/game"
 
 use Rack::Session::Pool
 
