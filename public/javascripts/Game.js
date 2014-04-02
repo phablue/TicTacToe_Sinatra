@@ -1,6 +1,7 @@
 (function() {
   var Game = {
     goFirst: null,
+    callback: null,
 
     changeCurrentPlayer: function(currentPlayer) {
       UI.currentPlayer = currentPlayer == "X" ? "O" : "X";
@@ -10,7 +11,7 @@
       if(UI.gameType === ".player") {
         return UI.winner;
       }
-      return currentPlayer == "X" ? "Player 'X'" : "Player 'O'";
+      return UI.currentPlayer == "X" ? "Player 'O'" : "Player 'X'";
     },
 
     firstMove: function() {
@@ -25,19 +26,18 @@
       }
     },
 
-    checkGameOver: function(currentPlayer) {
-      this.changeCurrentPlayer(currentPlayer);
-      $.getJSON("/game/gamerules/").done(function(data) {
-        if(data["game_over"]) {
-          UI.visualWhenGameOver(currentPlayer);
-        }
-      });
-      return false;
+    nextTurn: function(callback) {
+      Game.callback = callback;
+      Game.changeCurrentPlayer(UI.currentPlayer);
+      $.getJSON("/game/gamerules/").done(Game.gameStatus);
     },
 
-    nextTurn: function(callback) {
-      if (Game.checkGameOver(UI.currentPlayer) === false) {
-        callback(Game.playGame);
+    gameStatus: function(data) {
+      if(data["game_over"]) {
+        UI.visualWhenGameOver(UI.currentPlayer);
+      }
+      else {
+        Game.callback(Game.playGame);
       }
     },
 

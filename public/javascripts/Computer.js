@@ -1,11 +1,11 @@
 (function() {
   var Computer = {
     comp: null,
-    turn: null,
+    callback: null,
 
     chooseTheBestSpot: function(callback, currentPlayer) {
       this.comp = currentPlayer;
-      this.turn = callback;
+      this.callback = callback;
       $.getJSON("/game/computer/").done(Computer.markComputerChoice);
     },
 
@@ -13,7 +13,7 @@
       var chosenSpot = data["computer_choice"];
       Human.markChosenSpot(chosenSpot-1, Computer.comp);
       UI.hideComputerMessage();
-      Game.nextTurn(Computer.turn);
+      Game.nextTurn(Computer.callback);
     }
   }
   window.Computer = Computer;
