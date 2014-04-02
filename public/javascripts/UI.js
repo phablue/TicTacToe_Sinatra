@@ -17,13 +17,12 @@
     },
 
     visualWhenGameOver: function(currentPlayer) {
-      UI.winner = currentPlayer
       $.getJSON("/game/gamerules/").done(UI.gameOverMessage);
     },
 
     gameOverMessage: function(data) {
       if(data["game_win"]) {
-        UI.winMessage(Game.winner(UI.winner));
+        UI.winMessage(Game.winner(UI.currentPlayer));
         UI.visualAfterGameOver();
       }
       else if(data["game_tie"]) {
@@ -152,6 +151,7 @@
 
     computerPlay: function() {
       $.post("/game/computer/", {current_player: UI.currentPlayer}).done(function() {
+        UI.hideHumanMessage();
         UI.showComputerMessage(Game.computerChoice);
       });
     },

@@ -8,7 +8,7 @@
 
     winner: function(currentPlayer) {
       if(UI.gameType === ".player") {
-        return currentPlayer == "X" ? "Player" : "Computer";
+        return UI.winner;
       }
       return currentPlayer == "X" ? "Player 'X'" : "Player 'O'";
     },
@@ -35,13 +35,17 @@
       return false;
     },
 
+    nextTurn: function(callback) {
+      if (Game.checkGameOver(UI.currentPlayer) === false) {
+        callback(Game.playGame);
+      }
+    },
+
     humanChoice: function(chosenSpotID, callback) {
       if (Human.choiceSpot(chosenSpotID, UI.currentPlayer)) {
+        UI.winner = "Player";
         UI.unbindClick("tr td");
-        UI.hideHumanMessage();
-        if (Game.checkGameOver(UI.currentPlayer) === false) {
-          callback(Game.playGame);
-        }
+        Game.nextTurn(callback);
       }
       else {
         return;
@@ -49,10 +53,8 @@
     },
 
     computerChoice: function(callback) {
-      Computer.chooseTheBestSpot(UI.currentPlayer);
-      if (Game.checkGameOver(UI.currentPlayer) === false) {
-        callback(Game.playGame);
-      }
+      UI.winner = "Computer";
+      Computer.chooseTheBestSpot(callback, UI.currentPlayer);
     },
 
     playGame: function() {
