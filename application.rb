@@ -4,14 +4,6 @@ require "./lib/game"
 
 use Rack::Session::Pool
 
-configure do
-  set :game => Game.new
-end
-
-before do
-  @game = settings.game
-end
-
 get "/" do
   erb :tictactoe
 end
