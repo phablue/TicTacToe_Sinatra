@@ -33,7 +33,7 @@ get "/game/computer/" do
   {:computer_choice => computer_choice}.to_json
 end
 
-get "/game/" do
+get "/game/gamerules/" do
   {:game_over => @game.rules.game_over(@game.board),
     :game_win => @game.rules.game_win(@game.board),
     :game_tie => @game.rules.game_tie(@game.board)}.to_json

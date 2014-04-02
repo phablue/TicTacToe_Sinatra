@@ -27,7 +27,7 @@
 
     checkGameOver: function(currentPlayer) {
       this.changeCurrentPlayer(currentPlayer);
-      $.getJSON("/game/").done(function(data) {
+      $.getJSON("/game/gamerules/").done(function(data) {
         if(data["game_over"]) {
           UI.visualWhenGameOver(currentPlayer);
         }

@@ -18,7 +18,7 @@
 
     visualWhenGameOver: function(currentPlayer) {
       UI.winner = currentPlayer
-      $.getJSON("/game/").done(UI.gameOverMessage);
+      $.getJSON("/game/gamerules/").done(UI.gameOverMessage);
     },
 
     gameOverMessage: function(data) {
