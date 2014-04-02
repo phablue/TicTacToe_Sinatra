@@ -20,14 +20,14 @@ post "/game/human/" do
 end
 
 post "/game/computer/" do
-  game = session[:game]
-  current_player = params[:current_player]
-  computer_choice = game.computer.choose_the_best_spot(game.board, current_player)
-  session[:computer_choice] = computer_choice
+  session[:current_player] = params[:current_player]
 end
 
 get "/game/computer/" do
-  {:computer_choice => session[:computer_choice]}.to_json
+  game = session[:game]
+  current_player = session[:current_player]
+  computer_choice = game.computer.choose_the_best_spot(game.board, current_player)
+  {:computer_choice => computer_choice}.to_json
 end
 
 get "/game/gamerules/" do
