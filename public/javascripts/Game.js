@@ -56,6 +56,7 @@
     },
 
     playGame: function() {
+      $.get("/game/");
       if(UI.gameType === ".player") {
         if (Game.goFirst === "y") {
           UI.humanPlay();
