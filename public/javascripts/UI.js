@@ -151,8 +151,9 @@
     },
 
     computerPlay: function() {
-      $.post("/game/computer/", {current_player: UI.currentPlayer});
-      UI.showComputerMessage(Game.computerChoice);
+      $.post("/game/computer/", {current_player: UI.currentPlayer}).done(function() {
+        UI.showComputerMessage(Game.computerChoice);
+      });
     },
 
     resetGame: function() {
