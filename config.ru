@@ -1,2 +1,2 @@
-require "./application"
+require "./web_tictactoe"
 run Sinatra::Application
