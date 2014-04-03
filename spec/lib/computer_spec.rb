@@ -1,17 +1,8 @@
 require "spec_helper"
-require "stringio"
 
 describe Computer do
 	let(:board) {GameBoard.new}
-	let(:computer) {Computer.new(nil)}
-
-	it "computer msg" do
-		output = StringIO.new
-		writer = Writer.new(output)
-		com = Computer.new(writer)
-		writer.should_receive(:print_out).with(com.computer_msg)
-		com.show_computer_msg
-	end
+	let(:computer) {Computer.new()}
 
 	context "Gets point" do
 		it "if game win" do
@@ -20,7 +11,7 @@ describe Computer do
 										 "O", "X", "6",
 										 "O", "X", "X"
 										 ]
-			computer.get_point(board, "O", 6).should < 0
+			computer.get_point(board, 6).should < 0
 		end
 
 		it "if game tie" do
@@ -29,7 +20,7 @@ describe Computer do
 										 "X", "O", "O",
 										 "O", "X", "X"
 										 ]
-			computer.get_point(board, "O", 9).should == 0
+			computer.get_point(board, 9).should == 0
 		end
 	end
 
@@ -110,15 +101,8 @@ describe Computer do
 										 ]
 		}
 
-		it "show message" do
-			computer.should_receive(:show_computer_msg)
-			computer.choose_the_best_spot(board, "O")
-		end
-
 		it "mark" do
-			output = StringIO.new
-			writer = Writer.new(output)
-			computer = Computer.new(writer)
+			computer = Computer.new()
 			expect {computer.choose_the_best_spot(board, "O")}.to change {board.spots[4]}.to("O")
 		end
 	end

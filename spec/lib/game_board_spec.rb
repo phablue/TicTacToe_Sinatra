@@ -34,28 +34,6 @@ describe "GameBoard" do
 		end
 	end
 
-	context "Display board" do
-		before(:each) {
-			board.spots = [
-										 "1", "X", "3",
-										 "4", "O", "6",
-										 "X", "8", "9"
-										]
-		}
-
-		it "from first row" do
-			board.display_board(0).should == [" ", "X", " "]
-		end
-
-		it "from second row" do
-			board.display_board(1).should == [" ", "O", " "]
-		end
-
-		it "from third row" do
-			board.display_board(2).should == ["X", " ", " "]
-		end
-	end
-
 	it "places a chosen move" do
 		board.spots = [
 									 "1", "2", "3",
