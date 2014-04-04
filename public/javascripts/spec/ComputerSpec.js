@@ -33,7 +33,7 @@ describe ("Test Computer", function() {
 
   describe ("Test chooseTheBestSpot function", function() {
     var currentPlayer = "O";
-
+    // need to figure out json.done test
     beforeEach (function() {
       setFixtures(' <h1 id = "Computer">Please wait until computer choice..</h1> \
                     <table> \
@@ -42,17 +42,12 @@ describe ("Test Computer", function() {
                     <tr> <td id = "6">X</td> <td id = "7"></td> <td id = "8"></td> </tr> </table>');
     });
 
-    //test about getJson
-
-    it ("Hide Computer Message function", function() {
-      Computer.chooseTheBestSpot(currentPlayer);
-      expect($("#Computer")).toBeHidden();
-    });
-
-    it ("Marks the best spot", function() {
-      expect($("#8")).toBeEmpty();
+    xit ("Marks the best spot", function() {
+      var data = { "computer_choice": 8 };
+      var getJson = spyOn( $, 'getJSON' ).and.returnValue({done: function(c){console.log(c);c(data)}});
       Computer.chooseTheBestSpot(null, currentPlayer);
-      expect($("#jasmine-fixtures *8")).toHaveText("O");
+      expect(Computer.comp).toBe("O");
+      expect($("#jasmine-fixtures #7")).toHaveText("O");
     });
   });
 });
