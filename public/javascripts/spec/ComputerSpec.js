@@ -33,7 +33,6 @@ describe ("Test Computer", function() {
 
   describe ("Test chooseTheBestSpot function", function() {
     var currentPlayer = "O";
-    // need to figure out json.done test
     beforeEach (function() {
       setFixtures(' <h1 id = "Computer">Please wait until computer choice..</h1> \
                     <table> \
@@ -44,8 +43,8 @@ describe ("Test Computer", function() {
 
     it ("Marks the best spot", function() {
       var data = { "computer_choice": 8 };
-      var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e }});
-      Computer.chooseTheBestSpot(null, currentPlayer);
+      var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
+      Computer.chooseTheBestSpot(Game.playGame, currentPlayer);
       expect(Computer.comp).toBe("O");
       console.log($("#jasmine-fixtures #7").text())
       expect($("#jasmine-fixtures #7")).toHaveText("O");
