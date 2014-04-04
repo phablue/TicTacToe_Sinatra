@@ -1,9 +1,11 @@
 describe ("Test Human", function() {
   var currentPlayer;
   var e;
+  var ajaxpost
 
   describe("Sets value of selected elements", function() {
     beforeEach(function() {
+      ajaxpost = spyOn($, 'post')
       e = jQuery.Event("click");
       setFixtures(' <table> <tr> \
                       <td id = "0"></td> \
@@ -18,7 +20,7 @@ describe ("Test Human", function() {
       jQuery("#0").trigger(e);
       Human.choiceSpot(e.target.id, currentPlayer);
       expect ($("#0")).toHaveText("X");
-      // test ruby change
+      expect (ajaxpost).toHaveBeenCalledWith('/game/human/', {chosen_spot: 1, current_player: currentPlayer});
     });
 
     it ("td #2 and board[2] value changes to 'O' and current player changes to 'X'", function() {
@@ -27,7 +29,7 @@ describe ("Test Human", function() {
       jQuery("#2").trigger(e);
       Human.choiceSpot(e.target.id, currentPlayer);
       expect ($("#2")).toHaveText("O");
-      // test ruby change
+      expect (ajaxpost).toHaveBeenCalledWith('/game/human/', {chosen_spot: 3, current_player: currentPlayer});
     });
 
     it ("Can't set of a choosen spot", function() {
