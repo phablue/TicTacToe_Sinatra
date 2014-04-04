@@ -42,11 +42,12 @@ describe ("Test Computer", function() {
                     <tr> <td id = "6">X</td> <td id = "7"></td> <td id = "8"></td> </tr> </table>');
     });
 
-    xit ("Marks the best spot", function() {
+    it ("Marks the best spot", function() {
       var data = { "computer_choice": 8 };
-      var getJson = spyOn( $, 'getJSON' ).and.returnValue({done: function(c){console.log(c);c(data)}});
+      var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e }});
       Computer.chooseTheBestSpot(null, currentPlayer);
       expect(Computer.comp).toBe("O");
+      console.log($("#jasmine-fixtures #7").text())
       expect($("#jasmine-fixtures #7")).toHaveText("O");
     });
   });
