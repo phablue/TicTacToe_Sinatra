@@ -361,20 +361,33 @@ describe ("Test UI", function () {
     });
 
     describe ("Message pops up when GameOver", function() {
-      xit ("Pops up for win and click event doesn't work,if the Game win.", function() {
+      it ("Pops up for win and click event doesn't work,if the Game win.", function() {
+        var data = { "game_win": true };
+        var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
         UI.visualWhenGameOver("X");
         expect(winMessage).toHaveBeenCalled();
         expect(visualAfterGameOver).toHaveBeenCalled();
       });
 
-      xit ("Pops up for tie and click event doesn't work,if the Game tie.", function() {
+      it ("Pops up for tie and click event doesn't work,if the Game tie.", function() {
+        var data = { "game_tie": true };
+        var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
         UI.visualWhenGameOver("X");
         expect(tieMessage).toHaveBeenCalled();
         expect(visualAfterGameOver).toHaveBeenCalled();
       });
 
-      xit ("Not Pops up any message and click event works,if the Game is not won or tied.", function() {
-        UI.visualWhenGameOver("X");
+      it ("Not Pops up any message and click event works,if the Game is not tied.", function() {
+        var data = { "game_tie": false };
+        var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
+        expect(winMessage).not.toHaveBeenCalled();
+        expect(tieMessage).not.toHaveBeenCalled();
+        expect(visualAfterGameOver).not.toHaveBeenCalled();
+      });
+
+      it ("Not Pops up any message and click event works,if the Game is not win.", function() {
+        var data = { "game_win": false };
+        var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
         expect(winMessage).not.toHaveBeenCalled();
         expect(tieMessage).not.toHaveBeenCalled();
         expect(visualAfterGameOver).not.toHaveBeenCalled();
@@ -593,27 +606,6 @@ describe ("Test UI", function () {
       expect(changeHumanMessage).toHaveBeenCalled();
     });
 
-    describe ("when human vs.computer", function() {
-       // need to test getJson. done
-      beforeEach(function() {
-        UI.gameType = ".player";
-      });
-
-      xit ("call computerPlay if not game over", function() {
-        UI.humanPlay();
-        $("#0").click();
-        expect(computerPlay).toHaveBeenCalledWith(Game.playGame);
-      })
-
-      xit ("tr td stop to click if game over", function() {
-        setFixtures('<table> <td id = "0">X</td></table>');
-        UI.humanPlay();
-        $("#2").click();
-        expect($("tr td")).not.toHaveBeenTriggered();
-        expect(computerPlay).not.toHaveBeenCalledWith(Game.playGame);
-      })
-    });
-
     describe ("when human vs. human", function() {
       var humanPlay
       beforeEach(function() {
@@ -637,13 +629,14 @@ describe ("Test UI", function () {
   });
 
   describe ("Test computerPlay function", function() {
-    // need to test getJson. done
-    var humanPlay;
     var click;
+    var ajaxpost;
+    var humanPlay;
 
     beforeEach(function() {
-      click = spyOnEvent('tr td', 'click');
-      humanPlay = spyOn(UI, "humanPlay");
+      data = { "computer_choice": 8 };
+      humanPlay = spyOn(UI, "humanPlay")
+      ajaxpost = spyOn($, "post").and.returnValue({done: function(e) { e }});
       setFixtures(' <h1 id = "Computer">Please wait until computer choice..</h1> \
                     <table> <tr> \
                       <td id = "0"></td> \
@@ -652,13 +645,16 @@ describe ("Test UI", function () {
                     </tr>  </table>');
     });
 
-    xit ("call humanPlay if not game over", function() {
+    it ("call ajax function  if not game over", function() {
+      var data = { "game_over": false};
+      var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
       UI.computerPlay();
-      expect(humanPlay).toHaveBeenCalled();
+      expect(ajaxpost).toHaveBeenCalledWith("/game/computer/", {current_player: UI.currentPlayer});
     });
 
-    xit ("tr td stop to click if game over", function() {
-      setFixtures('<table> <td id = "0">X</td> <td id = "2">X</td></tr> </table>');
+    it ("tr td stop to click if game over", function() {
+      var data = { "game_over": true};
+      var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
       UI.computerPlay();
       expect($("tr td")).not.toHaveBeenTriggered();
     });

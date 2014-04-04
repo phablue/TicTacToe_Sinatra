@@ -46,7 +46,6 @@ describe ("Test Computer", function() {
       var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
       Computer.chooseTheBestSpot(Game.playGame, currentPlayer);
       expect(Computer.comp).toBe("O");
-      console.log($("#jasmine-fixtures #7").text())
       expect($("#jasmine-fixtures #7")).toHaveText("O");
     });
   });
