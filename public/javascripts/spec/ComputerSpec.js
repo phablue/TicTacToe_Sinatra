@@ -1,31 +1,37 @@
 describe ("Test Computer", function() {
-  describe ("Test mark Chosen spot", function() {
+  describe ("Test markComputerChoice function", function() {
+    var nextTurn;
+
     beforeEach (function() {
-      setFixtures('<table> \
-                    <tr> <td id = "0"></td> <td id = "1"></td> <td id = "2"></td> </tr> \
-                    <tr> <td id = "3"></td> <td id = "4"></td> <td id = "5"></td> </tr> \
-                    <tr> <td id = "6"></td> <td id = "7"></td> <td id = "8"></td> </tr> \
-                  </table>');
+      nextTurn = spyOn(Game, "nextTurn");
+      setFixtures(' <h1 id = "Computer">Please wait until computer choice..</h1> \
+                    <table> \
+                      <tr> <td id = "0"></td> <td id = "1"></td> <td id = "2"></td> </tr> \
+                      <tr> <td id = "3"></td> <td id = "4"></td> <td id = "5"></td> </tr> \
+                      <tr> <td id = "6"></td> <td id = "7"></td> <td id = "8"></td> </tr> \
+                    </table>');
     });
 
-    // should test about getJson
-
-    it ("Marks a currentPlayer 'X' in the board When chosen spot is 3", function() {
+    it ("Marks 'X' in the board when computer is 'X' and chosen spot is 3", function() {
       Computer.comp = "X";
-      chosenSpot = 3;
-      Computer.markComputerChoice(3);
+      chosenSpot = { "computer_choice": 3 };
+      Computer.markComputerChoice(chosenSpot);
       expect($("#jasmine-fixtures #2")).toHaveText("X");
+      expect($("#Computer")).toBeHidden();
+      expect(nextTurn).toHaveBeenCalled();
     });
 
-    it ("Marks a currentPlayer 'O' in the board When chosen spot is 9", function() {
+    it ("Marks 'O' in the board when computer is 'O' and chosen spot is 9", function() {
       Computer.comp = "O";
-      chosenSpot = 9;
-      Computer.markComputerChoice(9);
+      chosenSpot = { "computer_choice": 9 };
+      Computer.markComputerChoice(chosenSpot);
       expect($("#jasmine-fixtures #8")).toHaveText("O");
+      expect($("#Computer")).toBeHidden();
+      expect(nextTurn).toHaveBeenCalled();
     });
   });
 
-  describe ("Computer choose the best spot", function() {
+  describe ("Test chooseTheBestSpot function", function() {
     var currentPlayer = "O";
 
     beforeEach (function() {
