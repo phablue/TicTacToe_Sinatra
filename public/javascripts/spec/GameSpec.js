@@ -64,32 +64,26 @@ describe ("Test Game", function() {
   describe ("Test nextTurn function", function() {
     // need to figure out json.done test
     var visualWhenGameOver;
+    var computerPlay;
 
     beforeEach (function() {
       visualWhenGameOver = spyOn(UI, "visualWhenGameOver");
+      computerPlay = spyOn(UI, "computerPlay");
     });
 
     describe ("Call UI message functions", function() {
-      xit ("call visualWhenGameOver function, if the Game win.", function() {
-        Game.nextTurn(Game.gameStatus);
+      it ("call visualWhenGameOver function, if the Game over.", function() {
+        var data = { "game_over": true};
+        var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
+        Game.nextTurn(UI.computerPlay);
         expect(visualWhenGameOver).toHaveBeenCalled();
       });
 
-      xit ("call visualWhenGameOver function, if the Game tie.", function() {
-        Game.nextTurn(Game.gameStatus);
-        expect(visualWhenGameOver).toHaveBeenCalled();
-      });
-
-      xit ("return true, if the Game win.", function() {
-        expect(Game.nextTurn(Game.gameStatus)).toBeTruthy();
-      });
-
-      xit ("return true, if the Game tie.", function() {
-        expect(Game.nextTurn(Game.gameStatus)).toBeTruthy();
-      });
-
-      xit ("return false,if the Game is not won or tied.", function() {
-        expect(Game.nextTurn(Game.gameStatus)).toBeFalsy();
+      it ("call callback function, if the Game over.", function() {
+        var data = { "game_over": false};
+        var getjson = spyOn($, "getJSON").and.returnValue({done: function(e) { e(data); }});
+        Game.nextTurn(UI.computerPlay);
+        expect(computerPlay).toHaveBeenCalled();
       });
     });
   });
